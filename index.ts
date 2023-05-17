@@ -15,6 +15,6 @@ app.get("/", (_req, res) => {
     res.status(200).json("Welcome!");
 });
 
-app.listen(9000, () => {
-    console.log("Listenin on PORT 9000");
+app.listen(8080, () => {
+    console.log("Listenin on PORT 8080");
 });

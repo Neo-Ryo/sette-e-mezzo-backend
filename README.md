@@ -19,4 +19,6 @@
 
 _axios installed as well_
 
+## Initialization
+
 -   Run `yarn` or `npm install` to install node modules and then `yarn start` or `npm start` et voila!
