@@ -4,6 +4,9 @@ import morgan from "morgan";
 import bodyParser from "body-parser";
 import { prisma } from "./prisma.js";
 import { userRouter } from "./routes/index.js";
+import { config } from "dotenv"
+
+config()
 
 const { PORT } = process.env;
 
@@ -25,6 +28,8 @@ app.get("/", (_req, res) => {
 
 (async () => {
     try {
+        console.log(PORT);
+        
         if (!PORT) {
             throw Error("Missing env");
         }
