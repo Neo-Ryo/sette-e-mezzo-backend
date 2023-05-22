@@ -1,5 +1,5 @@
 import bcrypt from "bcryptjs";
-import { prisma } from "../prisma.js";
+import { prisma } from "../../prisma.js";
 import { Request, Response } from "express";
 
 const salt = bcrypt.genSaltSync(12);

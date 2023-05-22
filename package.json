@@ -6,7 +6,8 @@
     "license": "MIT",
     "description": "backend service to handle register and live gaming between users",
     "scripts": {
-        "start": "nodemon -L src/index.ts"
+        "start": "nodemon -L index.ts",
+        "build": "tsc -p ."
     },
     "devDependencies": {
         "@types/axios": "^0.14.0",

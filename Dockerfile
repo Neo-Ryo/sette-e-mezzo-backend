@@ -1,12 +1,16 @@
-FROM node:lts-alpine
+FROM node:lts-alpine as builder
+WORKDIR /app
+COPY . .
+RUN yarn install && yarn build
+
+FROM node:lts-alpine as final
 ENV NODE_ENV=production
 ENV PORT=9000
-ENV DATABASE_URL="postgresql://postgres:postgres@localhost:5432/sette-game?schema=public"
-WORKDIR /usr/src/app
-COPY ["package.json", "package-lock.json*", "npm-shrinkwrap.json*", "./"]
-RUN npm install --production --silent && mv node_modules ../
-COPY . .
-EXPOSE 8080
-RUN chown -R node /usr/src/app
-USER node
-CMD ["node", "index.js"]
+ENV DATABASE_URL="postgresql://postgres:postgres@0.0.0.0:5432/sette-game?schema=public"
+WORKDIR /app
+COPY --from=builder ./app/build .
+COPY package.json .
+COPY yarn.lock .
+COPY prisma .
+RUN yarn install --production
+CMD [ "node", "index.js" ]

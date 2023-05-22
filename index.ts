@@ -3,7 +3,7 @@ import cors from "cors";
 import morgan from "morgan";
 import bodyParser from "body-parser";
 import { prisma } from "./prisma.js";
-import { userRouter } from "./routes/index.js";
+import { userRouter } from "./src/routes/index.js";
 import { config } from "dotenv"
 
 config()
